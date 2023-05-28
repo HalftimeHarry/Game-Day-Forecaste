@@ -20,62 +20,62 @@
 	<thead>
 		<tr>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-900 uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Season
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Week
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Date
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Home Team
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Home Score
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Home Spread
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Home ML
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Away Team
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Away Score
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Away Spread
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Away ML
 			</th>
 			<th
-				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-white uppercase tracking-wider"
+				class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-black uppercase tracking-wider"
 			>
 				Total
 			</th>
@@ -84,7 +84,7 @@
 	<tbody>
 		{#each oddsData as odds}
 			<tr>
-				<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
+				<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-white">
 					{odds.season}
 				</td>
 				<td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-white">
