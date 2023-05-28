@@ -20,13 +20,22 @@
 	<thead>
 		<tr>
 			<th>Team</th>
+			<th>Strength of Schedule</th>
+			<th>Margin of Victory</th>
+			<th>Wins</th>
+			<th>Losses</th>
+			<th>Simple Rating System</th>
 		</tr>
 	</thead>
 	<tbody>
 		{#each teams as team}
 			<tr>
 				<td>{team.team}</td>
-				<!-- Display the team name -->
+				<td>{team.strengthOfSchedule}</td>
+				<td>{team.marginOfVictory}</td>
+				<td>{team.wins}</td>
+				<td>{team.losses}</td>
+				<td>{team.simpleRatingSystem}</td>
 			</tr>
 		{/each}
 	</tbody>

@@ -10,8 +10,10 @@
 </script>
 
 <AppShell>
-	<AppBar>
-		<h3 class="text-left">Game Day Forecaste</h3>
-	</AppBar>
+	<svelte:fragment slot="header">
+		<AppBar>
+			<h3 class="text-left">Game Day Forecaste</h3>
+		</AppBar>
+	</svelte:fragment>
 	<slot />
 </AppShell>

@@ -1,6 +1,8 @@
 # Game-Day-Forecaste
 Game Day Forecaster is a web application that utilizes historical NFL football data and advanced statistical analysis.
 
+node index.js
+
 
 6. Open your web browser and visit `http://localhost:5000` to access the Game Day Forecaster app.
 

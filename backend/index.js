@@ -5,63 +5,83 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
+const csvDataOdds = []; // Array for odds data
+const csvDataTeams = []; // Array for teams data
 
-let csvData = []; // Define the csvData variable
+// Import odds data only if csvDataOdds is empty
+if (csvDataOdds.length === 0) {
+  fs.createReadStream('/workspace/Game-Day-Forecaste/backend/import/odds_1.csv')
+    .pipe(csv())
+    .on('data', (data) => {
+      csvDataOdds.push(data);
+    })
+    .on('end', () => {
+      console.log('Odds CSV import completed');
+    });
+}
 
-// Import teams data only if csvData is empty
-if (csvData.length === 0) {
+// Import teams data only if csvDataTeams is empty
+if (csvDataTeams.length === 0) {
   fs.createReadStream('/workspace/Game-Day-Forecaste/backend/import/teams.csv')
     .pipe(csv())
     .on('data', (data) => {
-      // Update the data structure to include the new fields
-      const teamData = {
-        team: data['Tm'],
-        wins: data['W'],
-        losses: data['L'],
-        ties: data['T'],
-        winPercentage: data['W-L%'],
-        pointsFor: data['PF'],
-        pointsAgainst: data['PA'],
-        pointDifferential: data['PD'],
-        marginOfVictory: data['MoV'],
-        strengthOfSchedule: data['SoS'],
-        simpleRatingSystem: data['SRS'],
-        offensiveSRS: data['OSRS'],
-        defensiveSRS: data['DSRS'],
-        // Add other fields as needed
-      };
-      csvData.push(teamData);
+      csvDataTeams.push(data);
     })
     .on('end', () => {
-      console.log('CSV import completed');
+      console.log('Teams CSV import completed');
     });
 }
 
 // Update the /api/teams route to include the new fields
 app.get('/api/teams', (req, res) => {
-  // Check if csvData is defined and not empty
-  if (csvData && csvData.length > 0) {
-    const teamsData = csvData.map((data) => {
+  // Check if csvDataTeams is defined and not empty
+  if (csvDataTeams && csvDataTeams.length > 0) {
+    const teamsData = csvDataTeams.map((data) => {
       return {
-        team: data.team,
-        wins: data.wins,
-        losses: data.losses,
-        ties: data.ties,
-        winPercentage: data.winPercentage,
-        pointsFor: data.pointsFor,
-        pointsAgainst: data.pointsAgainst,
-        pointDifferential: data.pointDifferential,
-        marginOfVictory: data.marginOfVictory,
-        strengthOfSchedule: data.strengthOfSchedule,
-        simpleRatingSystem: data.simpleRatingSystem,
-        offensiveSRS: data.offensiveSRS,
-        defensiveSRS: data.defensiveSRS,
-        // Include other fields you want to send
+        team: data.Tm,
+        wins: parseInt(data.W),
+        losses: parseInt(data.L),
+        ties: parseInt(data.T),
+        winPercentage: parseFloat(data['W-L%']),
+        pointsFor: parseInt(data.PF),
+        pointsAgainst: parseInt(data.PA),
+        pointDifferential: parseInt(data.PD),
+        marginOfVictory: parseFloat(data.MoV),
+        strengthOfSchedule: parseFloat(data.SoS),
+        simpleRatingSystem: parseFloat(data.SRS),
+        offensiveSRS: parseFloat(data.OSRS),
+        defensiveSRS: parseFloat(data.DSRS),
       };
     });
     res.json(teamsData);
   } else {
-    res.json({ message: 'No data available' });
+    res.json({ message: 'No teams data available' });
+  }
+});
+
+// Update the /api/odds route to include the new fields
+app.get('/api/odds', (req, res) => {
+  // Check if csvDataOdds is defined and not empty
+  if (csvDataOdds && csvDataOdds.length > 0) {
+    const oddsData = csvDataOdds.map((data) => {
+      return {
+        season: data.Season,
+        week: data.Week,
+        date: data.Date,
+        homeTeam: data['Home Team'],
+        homeScore: parseInt(data['Home Score']),
+        homeSpread: parseFloat(data['Home Closing Spread']),
+        homeML: parseFloat(data['Home Closing ML']),
+        awayTeam: data['Away Team'],
+        awayScore: parseInt(data['Away Score']),
+        awaySpread: parseFloat(data['Away Closing Spread']),
+        awayML: parseFloat(data['Away Closing ML']),
+        total: parseFloat(data['Closing O/U Total'])
+      };
+    });
+    res.json(oddsData);
+  } else {
+    res.json({ message: 'No odds data available' });
   }
 });
 
