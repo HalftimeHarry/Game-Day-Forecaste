@@ -15,7 +15,17 @@ export interface UpcomingGameInput {
   spread: number;
   total: number;
   moneyLine: number;
-  pregame: boolean;
+}
+
+export interface Game {
+  date: string;
+  homeTeam: string;
+  awayTeam: string;
+  spread: number;
+  total: number;
+  moneyLine: number;
+  code: string;
+  favorite: boolean;
 }
 
 export interface PredictionInput {
