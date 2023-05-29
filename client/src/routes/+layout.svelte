@@ -7,12 +7,13 @@
 	import '../app.postcss';
 	// Skeleton UI
 	import { AppBar, AppShell } from '@skeletonlabs/skeleton';
+	import NavagationHeader from '../components/NavagationHeader.svelte';
 </script>
 
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>
-			<h3 class="text-left">Game Day Forecaste</h3>
+			<NavagationHeader />
 		</AppBar>
 	</svelte:fragment>
 	<slot />
