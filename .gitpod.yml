@@ -1,0 +1,4 @@
+tasks:
+- name: MariaDB
+  init: docker build -t my-mariadb .
+  command: docker run --name my-mariadb -p 3306:3306 my-mariadb
